@@ -84,7 +84,7 @@ Each example pairs an image with a continuous steering/speed target. The origina
 
 ### Training curves
 
-![Training and validation loss / MAE charts](assets/training curves.png)
+![Training and validation loss / MAE charts](assets/trainingcurves.png)
 
 ### Simulation scenarios
 
