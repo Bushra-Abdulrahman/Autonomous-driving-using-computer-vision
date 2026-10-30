@@ -4,7 +4,7 @@
 
 ![Webots driving demonstration](assets/demo_preview.jpg)
 
-**[Watch the full robot demonstration](assets/robot_demo.mp4)** · [Training notebook](notebooks/training_experiments.ipynb) · [Engineering notes](docs/ENGINEERING_NOTES.md)
+**[Watch the full robot demonstration](assets/robot_demo.mp4)** · [Training notebook](CNN_training.ipynb) 
 
 ## Overview
 
@@ -78,13 +78,13 @@ The project uses the publicly referenced **[Webots dataset on Kaggle](https://ww
 | Validation | 4,897 |
 | Testing | 4,898 |
 
-Each example pairs an image with a continuous steering/speed target. The original notebook loads `std_train_data.csv` and `std_test_data.csv`; it does **not** currently load the separately reported validation split. See [evaluation caveats](#evaluation-caveats).
+Each example pairs an image with a continuous steering/speed target. The original notebook loads `std_train_data.csv` and `std_test_data.csv`; it does **not** currently load the separately reported validation split.
 
 ## Results
 
 ### Training curves
 
-![Training and validation loss / MAE charts](assets/training_curves.png)
+![Training and validation loss / MAE charts](assets/training curves.png)
 
 ### Simulation scenarios
 
