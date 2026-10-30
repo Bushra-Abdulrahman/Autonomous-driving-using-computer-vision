@@ -96,30 +96,6 @@ Each example pairs an image with a continuous steering/speed target. The origina
 
 Approximately **15% GPU utilization (RTX 4090)** and **7% CPU utilization (Intel i7)** during a specific simulation run, with camera capture approximately every **50 ms**.
 
-## Repository layout
-
-```text
-webots-vision-autonomous-driving/
-├── README.md
-├── notebooks/
-│   └── training_experiments.ipynb   # Original training + controller notebook
-├── src/
-│   └── model.py                     # Extracted CNN architecture
-├── controllers/
-│   └── autonomous_driver/
-│       ├── autonomous_driver.py     # Extracted Webots control loop
-│       └── model.py                 # Local architecture for Webots imports
-├── assets/
-│   ├── robot_demo.mp4
-│   ├── demo_preview.jpg
-│   └── training_curves_report.png
-├── docs/
-│   └── ENGINEERING_NOTES.md
-├── requirements.txt
-├── .gitignore
-└── LICENSE_NOTE.md
-```
-
 ## Getting started
 
 ### 1. Prerequisites
@@ -155,16 +131,16 @@ print(path)
 
 ### 4. Train the CNN
 
-Open [`notebooks/training_experiments.ipynb`](notebooks/training_experiments.ipynb) in Jupyter or Colab. Run the data-loading, model, and training sections in order. **Do not run the Webots controller cell in a regular notebook environment**: it requires the simulator's `vehicle` module and an active robot controller.
+Open [`CNN_training.ipynb`](CNN_training.ipynb) in Jupyter or Colab. Run the data-loading, model, and training sections in order. **Do not run the Webots controller cell in a regular notebook environment**: it requires the simulator's `vehicle` module and an active robot controller.
 
 Before treating the experiment as reproducible, create a true validation loader and update the training loop to use it. The original notebook saves a model state dictionary as `cnn_project.pth`.
 
 ### 5. Run inference in Webots
 
 1. Use a Webots world containing a compatible vehicle with a camera device named `camera`.
-2. Copy `controllers/autonomous_driver/` into the world's controller directory, or configure an equivalent controller path.
-3. Place the trained `cnn_project.pth` alongside `autonomous_driver.py` and `model.py`.
-4. Configure the vehicle to use the `autonomous_driver` controller and ensure the controller's Python environment has the necessary packages.
+2. Copy `controller/autonomous_driver/` into the world's controller directory, or configure an equivalent controller path.
+3. Place the trained `cnn_project.pth` alongside `webot_controller.py`.
+4. Configure the vehicle to use the `webot_controller.py` controller and ensure the controller's Python environment has the necessary packages.
 5. Start the Webots simulation and inspect the vehicle's steering and speed behavior.
 
 **Status:** This extracted controller preserves the original notebook's model architecture and control logic, but has **not been executed against the user's Webots world**. The checkpoint and world are required to validate it. Confirm camera channel order and speed units before interpreting behavior.
